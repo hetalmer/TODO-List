@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href='{% static 'base.css' %}'/>
+        <script type="text/javascript" src='{% static 'task/js/index.js' %}'></script>
+        <script type="text/javascript" src='https://code.jquery.com/jquery-3.3.1.js'></script>          
+        <title>
+            {% block title %}{%endblock title %}
+        </title>
+        {% block css %}{% endblock css %}
+    </head>
+    
+    <body>
+        <header>
+            <h1>TODO LIST</h1>
+        </header>
+        {% block content %}{% endblock content %}
+    </body>
+</html>

@@ -1,0 +1,143 @@
+.main {
+    margin: 64px auto;
+    width: 50%;
+    height: auto;
+    background: rgb(193, 243, 193);
+}
+
+.main h1 {
+    margin: 0 auto;
+    background: rgb(75, 214, 75);
+    text-align: center;
+    height: 40px;
+    border-radius: 10px 10px 0 0;
+    vertical-align: center;
+}
+
+.button {
+    height: 30px;
+    width: 90px;
+    background: rgb(75, 214, 75);
+    color: rgba(0, 0, 0, 0.776);
+    border-radius: 10px;
+    border-color: rgb(7, 109, 7);
+    font-size: 18px;
+}
+
+.button:hover,
+.button:active {
+    font-weight: bold;
+    background: green;
+    color: white
+}
+
+.new-task-form {
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+    height: 170px;
+}
+
+.new-task-form input {
+    margin: 0px auto;
+    width: 100%;
+}
+
+.new-task-form input[type=text],
+input[type=date],
+label {
+    border-radius: 5px;
+    width: 100%;
+    padding: 4px;
+}
+
+.new-task-form input[type=submit] {
+    margin: 0 auto;
+}
+
+.tasks {
+    margin: 0 auto;
+}
+
+.tasks h3 {
+    margin: 0px auto 0px auto;
+    width: 30%;
+    height: 30px;
+    text-align: center;
+    color: rgb(6, 36, 6);
+    font-size: 20px;
+}
+
+hr.line {
+    margin: 0 auto;
+    border-color: rgb(2, 36, 2);
+    border-width: 1px;
+    width: 40%;
+}
+
+.tasks__options {
+    margin: 10px;
+    margin: 0 auto;
+}
+
+.tasks__options ul {
+    list-style: none;
+    width: 100%;
+    padding-top: 10px;
+}
+
+.tasks__options__list {
+    display: inline-block;
+    padding: 0px 30px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.tasks__options__list a {
+    text-decoration: none;
+    color: rgb(5, 34, 5);
+}
+
+.tasks__options__list a:hover,
+.tasks__options__list a:active {
+    color: rgb(80, 59, 47);
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.tasks__content {
+    margin-top: 20px;
+    width: 100%;
+    height: 200px;
+    overflow-y: scroll;
+    padding: 8px;
+}
+
+.tasks__content__table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0px auto;
+    background: white;
+}
+
+.tasks__content__table td,
+.tasks__content__table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.tasks__content__table tr:nth-child(even) {
+    background-color: rgb(140, 180, 140);
+}
+
+.tasks__content__table tr:hover {
+    background-color: #ddd;
+}
+
+.tasks__content__table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(7, 109, 7);
+    color: white;
+}

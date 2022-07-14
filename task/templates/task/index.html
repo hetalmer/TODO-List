@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Todo List
+{% endblock title %}
+
+{% block css %}
+<script type="text/javascript" src='{% static 'task/js/index.js' %}'></script>
+<script type="text/javascript" src='https://code.jquery.com/jquery-3.3.1.js'></script>
+<link rel="stylesheet" href='{% static 'task/index.css' %}'/>  
+{% endblock css %}
+{% block content %}
+    <div class='main'>
+        <h1>TODO List</h1>
+        <content>
+            <form class='new-task-form' method='POST' action='/'>
+                {% csrf_token %}
+                <!--{{ form.title }}
+                {{ form.starting_date }}-->
+                <label>Task Title</label>{{ form.title }}</br>
+                <label>Task Date</label>{{ form.starting_date }}</br></br>
+                <input class="button" type='submit' id='new-task-submit' value='Add Task' /></br></br></br>
+            </form> 
+            <div class='tasks'>       
+                <h3>Tasks</h3>
+                <hr class='line'>
+                <div class='tasks__options'>
+                    <ul>
+                        <li class='tasks__options__list'><a href="#today" active id="ali" active >Today</a></li>
+                        <li class='tasks__options__list'><a href="#completed" id="bli" active>Completed</a></li>
+                        <li class='tasks__options__list'><a href="#upcoming" id="cli">Upcoming</a></li>
+                        <li class='tasks__options__list'><a href="#all" id="dli">All</a></li>
+                    </ul>
+                </div>
+                <div id="today" class="tasks__content">
+                    <table class="tasks__content__table">
+                    <th>Tasks</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    {% now "d/m/Y" as todays_date %}
+                    {% for data in formdata %}
+                    {% if todays_date == data.starting_date|date:"d/m/Y" %}
+                    <tr>
+                    <td>{{data.title}}
+                    <td><button class='action edit'><a href='{% url 'edit-page' data.id %}'>Edit</a></button></td>
+                    <td><button class='action delete'><a onclick='return confirm_check()' href='{% url 'delete-page' data.id %}'>Delete</a></button></td>
+                    </tr>
+                    {%endif%}
+                    {% endfor %}
+                </table>
+                </div>
+                <div id="completed" class="tasks__content">
+                    <table class="tasks__content__table">
+                        <th>Tasks</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                        {% for data in formdata %}
+                        {% if data.complete == True %}
+                        <tr>
+                        <td>{{data.title}}</td>  
+                        <td><button class='action edit'><a href='{% url 'edit-page' data.id %}'>Edit</a></button></td>
+                        <td><button class='action delete'><a onclick='return confirm_check()' href='{% url 'delete-page' data.id %}'>Delete</a></button></td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+                <div id="upcoming" class="tasks__content">
+                    <table class="tasks__content__table">
+                    <th>Tasks</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    {% now "d/m/Y" as todays_date %}
+                    {% for data in formdata %}
+                    {% if data.starting_date|date:"d/m/Y" > todays_date and data.complete == False%}
+                    <tr>
+                    <td>{{data.title}}</td>  
+                    <td><button class='action edit'><a href='{% url 'edit-page' data.id %}'>Edit</a></button></td>
+                    <td><button class='action delete'><a onclick='return confirm_check()' href='{% url 'delete-page' data.id %}'>Delete</a></button></td>
+                    </tr>
+                    {%endif%}
+                    {% endfor %}
+                </table>
+                </div>
+                <div id="all" class="tasks__content">
+                    <table class="tasks__content__table">
+                        <th>Tasks</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                        {% for data in formdata %}
+                        <tr>
+                        <td>{{data.title}}</td>  
+                        <td><button class='action edit'><a href='{% url 'edit-page' data.id %}'>Edit</a></button></td>
+                        <td><button class='action delete'><a onclick='return confirm_check()' href='{% url 'delete-page' data.id %}'>Delete</a></button></td>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </content>
+{% endblock content %}

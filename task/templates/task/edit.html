@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    EditTask
+{% endblock title %}
+{% block css %}
+<script type="text/javascript" src='{% static 'task/js/index.js' %}'></script>
+<script type="text/javascript" src='https://code.jquery.com/jquery-3.3.1.js'></script>
+<link rel="stylesheet" href='{% static 'task/index.css' %}'/>  
+{% endblock css %}
+{% block content %}
+    <div class='main'>
+            <h1>EDIT List</h1>
+        <content>
+            <form class='new-task-form' method='POST' action=''>
+                {% csrf_token %}
+                <label>Task Title</label>{{ form.title }}</br>
+                Is completed {{form.complete}}</br>
+                <label>Task Date</label>{{ form.starting_date}}</br>
+                <input class="button" type='submit' name='update' value="Edit Task">
+            </form>
+        </content>
+    </div>
+{% endblock content %}
+
